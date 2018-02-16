@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class SourceCard extends Component {
 
   subscribe(sourceObj) {
-    if (this.props.subscribedSources.length < 3)
+    //if (this.props.subscribedSources.length < 3)
       this.props.addSourceToSubscriptions(sourceObj)
   }
 
