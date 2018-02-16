@@ -14,9 +14,13 @@ class SourceCard extends Component {
   render() {
     return (
       <div className="card sourceCard">
-        <div>Name: {this.props.name}</div>
-        <div>Description: {this.props.description}</div>
-        <button onClick={() => this.subscribe({sourceId: this.props.id})} disabled={this.props.isSubscribed} className={this.props.isSubscribed ? "warning" : "success"}>{this.props.isSubscribed ? "Subscribed" : "Subscribe"}</button>
+        <div className="sourceNameAndDescription">
+          <div className="sourceName">Name: {this.props.name}</div>
+          <div className="sourceDescription">{this.props.description}</div>
+        </div>
+        <div className="sourceButton">
+          <button style={{margin: '0px'}} onClick={() => this.subscribe({ sourceId: this.props.id })} disabled={this.props.isSubscribed} className={this.props.isSubscribed ? "warning" : "success"}>{this.props.isSubscribed ? "Subscribed" : "Subscribe"}</button>
+        </div>
       </div>
     );
   }

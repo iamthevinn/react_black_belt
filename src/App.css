@@ -99,8 +99,26 @@
   display: inline-block;
   width: 50%;
   vertical-align: top;
+  text-align: right;
 }
 
 .articleTitleAndAuthor {
   padding-bottom: 10px;
+}
+
+.sourceNameAndDescription {
+  display: inline-block;
+  width: 80%;
+}
+
+.sourceName {
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 3%
+}
+
+.sourceButton {
+  height: 100%;
+  display: inline-block;
+  width: 20%;
 }
