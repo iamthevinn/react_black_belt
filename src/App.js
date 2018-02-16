@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import HomeView from './HomeView'
+import FeedView from './FeedView'
+import CategoryView from './CategoryView'
 import {
   Switch,
   Link,
@@ -48,9 +50,10 @@ class App extends Component {
             <div className="newsMe" >News Me!</div>
             <NavBar />
           </div>
-
           <Switch>
             <Route exact path="/" component={HomeView} />
+            <Route exact path="/categories" component={CategoryView} />
+            <Route exact path="/feed" component={FeedView} />
           </Switch>
         </div>
       </Router>

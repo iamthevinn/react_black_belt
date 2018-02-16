@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 
-class HomeView extends Component {
+class CategoryView extends Component {
   render() {
     return (
         <div>
-            Top Headlines
+            CategoryView
         </div>
     );
   }
 }
 
-export default HomeView;
+export default CategoryView;
