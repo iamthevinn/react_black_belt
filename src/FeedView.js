@@ -3,6 +3,7 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import { loadSubscribedSourcesToState } from './state/actions';
 import { connect } from 'react-redux';
+import ArticleCard from './ArticleCard'
 
 class FeedView extends Component {
 
@@ -18,7 +19,7 @@ class FeedView extends Component {
           </h1>
             <div className="topHeadlinesContainer">
               <div className="topHeadlinesInnerContainer">
-              
+              {this.props.subscribedHeadlines.map((article) => <ArticleCard key={article.url} title={article.title} description={article.description} author={article.author} urlToImage={article.urlToImage} urlToArticle={article.url} />)}
             </div>
           </div>
         </div>
