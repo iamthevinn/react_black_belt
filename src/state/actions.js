@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const GET_TOP_HEADLINES = "GET_TOP_HEADLINES";
 export const CHANGE_SELECTED_CATEGORY = "CHANGE_SELECTED_CATEGORY";
-
+export const GET_SOURCES_BY_CATEGORY = "GET_SOURCES_BY_CATEGORY"
 
 export function loadTopHeadlines() {
   return (dispatch, getState, api) => {
@@ -12,6 +12,17 @@ export function loadTopHeadlines() {
       dispatch({ type: GET_TOP_HEADLINES, payload: headlines.articles })
     }, () => { })
   }
+}
+
+export function loadCategory(categoryName) {
+
+    return (dispatch, getState, api) => {
+        const promise = axios.get(api + 'sources?category=' + categoryName + '&language=en&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
+    
+        promise.then(({ data: sourceData }) => {
+          dispatch({ type: GET_SOURCES_BY_CATEGORY, payload: sourceData.sources })
+        }, () => { })
+      }
 }
 /*
 export function loadBlocDataToState(id) {

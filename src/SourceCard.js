@@ -6,7 +6,8 @@ class SourceCard extends Component {
   render() {
     return (
       <div className="card sourceCard">
-          <div>{this.props.name}</div>
+          <div>Name: {this.props.name}</div>
+          <div>Description: {this.props.description}</div>
       </div>
     );
   }

@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import ArticleCard from './ArticleCard';
-import { CHANGE_SELECTED_CATEGORY } from './state/actions';
+import { CHANGE_SELECTED_CATEGORY, loadCategory } from './state/actions';
 import { connect } from 'react-redux';
 import SourceCard from './SourceCard'
 
 class CategoryView extends Component {
 
   componentDidMount() {
-
+    this.props.loadCategory(this.props.selectedCategory)
   }
 
   changeSelectedCategory(categoryName) {
     this.props.changeSelectedCategory(categoryName);
+    this.props.loadCategory(categoryName)
   }
 
   render() {
@@ -37,31 +38,7 @@ class CategoryView extends Component {
         </h1>
         <div className="sourcesContainer">
               <div className="sourcesInnerContainer">
-              {/* {this.props.topHeadlines.map((article) => <ArticleCard key={article.url} title={article.title} description={article.description} author={article.author} urlToImage={article.urlToImage} urlToArticle={article.url} />)} */}
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
-              <SourceCard />
+              {this.props.sourcesByCategory.map((source) => <SourceCard key={source.name} description={source.description} name={source.name} />)}
             </div>
           </div>
       </div>
@@ -72,13 +49,15 @@ class CategoryView extends Component {
 const mapStateToProps = state => {
 
   return {
-    selectedCategory: state.selectedCategory
+    selectedCategory: state.selectedCategory,
+    sourcesByCategory: state.sourcesByCategory
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeSelectedCategory: (categoryName) => dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: categoryName })
+    changeSelectedCategory: (categoryName) => dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: categoryName }),
+    loadCategory: (categoryName) => dispatch(loadCategory(categoryName))
   }
 };
 
