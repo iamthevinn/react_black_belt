@@ -6,17 +6,29 @@ import { connect } from 'react-redux';
 
 class SourceCard extends Component {
 
+  subscribe(sourceObj) {
+    if (this.props.subscribedSources.length < 3)
+      this.props.addSourceToSubscriptions(sourceObj)
+  }
 
   render() {
     return (
       <div className="card sourceCard">
         <div>Name: {this.props.name}</div>
         <div>Description: {this.props.description}</div>
-        <button onClick={() => this.props.addSourceToSubscriptions({sourceId: this.props.id})} disabled={this.props.isSubscribed} className={this.props.isSubscribed ? "warning" : "success"}>{this.props.isSubscribed ? "Subscribed" : "Subscribe"}</button>
+        <button onClick={() => this.subscribe({sourceId: this.props.id})} disabled={this.props.isSubscribed} className={this.props.isSubscribed ? "warning" : "success"}>{this.props.isSubscribed ? "Subscribed" : "Subscribe"}</button>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+
+  return {
+    subscribedSources: state.subscribedSources
+  };
+};
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -25,4 +37,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(null, mapDispatchToProps)(SourceCard)
+export default connect(mapStateToProps, mapDispatchToProps)(SourceCard)
