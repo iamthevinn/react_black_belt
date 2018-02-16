@@ -14,3 +14,28 @@
   display: inline-block;
   width: 50%;
 }
+
+.homeHeader {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.appHeader {
+  padding-bottom: 20px;
+}
+
+.topHeadlinesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topHeadlinesInnerContainer {
+  width: 50%;
+  overflow-y: auto;
+  max-height: 67vh;
+}
+
+.articleCard {
+  margin-bottom: 2px;
+}
