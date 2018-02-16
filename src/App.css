@@ -36,6 +36,18 @@
   max-height: 67vh;
 }
 
+.sourcesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sourcesInnerContainer {
+  width: 50%;
+  overflow-y: auto;
+  max-height: 45vh;
+}
+
 .articleCard {
   margin-bottom: 2px;
 }
@@ -58,4 +70,8 @@
 
 .radioText {
   display: inline-block;
+}
+
+.sourceCard {
+  margin-bottom: 2px;
 }

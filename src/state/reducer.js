@@ -2,7 +2,7 @@ import { GET_TOP_HEADLINES, CHANGE_SELECTED_CATEGORY } from './actions';
 
 const initialState = {
     topHeadlines: [],
-    selectedCategory: 'business'
+    selectedCategory: 'Business'
 };
 
 function reducer(state = initialState, action) {
