@@ -6,7 +6,10 @@ class ArticleCard extends Component {
   render() {
     return (
       <div className="card articleCard">
-          The Title
+          <a href={this.props.urlToArticle}>Title: {this.props.title}</a>
+          <div>Author: {this.props.author}</div>
+          <div>Description: {this.props.description}</div>
+          <img src={this.props.urlToImage} alt="newsPic" />
       </div>
     );
   }
