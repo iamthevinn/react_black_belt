@@ -31,7 +31,7 @@
 }
 
 .topHeadlinesInnerContainer {
-  width: 50%;
+  width: 75%;
   overflow-y: auto;
   max-height: 67vh;
 }
@@ -74,4 +74,33 @@
 
 .sourceCard {
   margin-bottom: 2px;
+}
+
+.articleImage {
+  width: 33%;
+  height: 100%;
+  display: inline-block;
+  padding-right: 5%;
+  vertical-align: top;
+}
+
+.articleDetails {
+  width: 67%;
+  height: 100%;
+  display: inline-block;
+}
+
+.articleTitle {
+  display: inline-block;
+  width: 50%
+}
+
+.articleAuthor {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
+.articleTitleAndAuthor {
+  padding-bottom: 10px;
 }
