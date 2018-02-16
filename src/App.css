@@ -43,13 +43,13 @@
 }
 
 .sourcesInnerContainer {
-  width: 50%;
+  width: 75%;
   overflow-y: auto;
-  max-height: 45vh;
+  max-height: 50vh;
 }
 
 .articleCard {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .categoryButtonContainer {
@@ -73,7 +73,7 @@
 }
 
 .sourceCard {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
   display:flex;
   align-items: center;
 }
