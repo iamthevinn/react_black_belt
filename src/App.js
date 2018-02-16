@@ -31,7 +31,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className="navigationContent">
-        <ul className="tabs">
+        <ul className="tabs tabNames">
           <NavItem exact={true} to={'/'} navName="Home" />
           <NavItem exact={true} to={'/categories'} navName="Customize" />
           <NavItem exact={true} to={'/feed'} navName="Personal Feed" />
