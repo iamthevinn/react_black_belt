@@ -50,7 +50,9 @@ export function addSourceToSubscriptions(sourceObj) {
 export function loadSubscribedHeadlinesToState(subscribedSourcesArray) {
 
   return (dispatch, getState, api) => {
-    const promise = axios.get('http://newsapi.org/v2/everything?sources=' + subscribedSourcesArray.join() + '&language=en&pageSize=100&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
+    if (subscribedSourcesArray.length === 0)
+      return
+    const promise = axios.get('http://newsapi.org/v2/everything?sources=' + subscribedSourcesArray.join() + '&language=en&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
 
     promise.then(({data: headlines}) => {
       dispatch({type: GET_SUBSCRIBED_HEADLINES, payload: headlines.articles})
