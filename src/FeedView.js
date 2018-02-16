@@ -18,7 +18,7 @@ class FeedView extends Component {
             Personal Feed
           </h1>
             <div className="topHeadlinesContainer">
-              <div className="topHeadlinesInnerContainer">
+              <div className={this.props.subscribedHeadlines.length > 0 ? "topHeadlinesInnerContainer card" : "topHeadlinesInnerContainer"}>
               {this.props.subscribedHeadlines.map((article) => <ArticleCard key={article.url} title={article.title} description={article.description} author={article.author} urlToImage={article.urlToImage} urlToArticle={article.url} />)}
             </div>
           </div>

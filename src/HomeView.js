@@ -18,7 +18,7 @@ class HomeView extends Component {
             Top Headlines
           </h1>
             <div className="topHeadlinesContainer">
-              <div className="topHeadlinesInnerContainer">
+              <div className="card topHeadlinesInnerContainer">
               {this.props.topHeadlines.map((article) => <ArticleCard key={article.url} title={article.title} description={article.description} author={article.author} urlToImage={article.urlToImage} urlToArticle={article.url} />)}
             </div>
           </div>

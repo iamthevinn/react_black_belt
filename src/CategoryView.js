@@ -38,7 +38,7 @@ class CategoryView extends Component {
           {this.props.selectedCategory} Sources
         </h1>
         <div className="sourcesContainer">
-              <div className="sourcesInnerContainer">
+              <div className="sourcesInnerContainer card">
               {this.props.sourcesByCategory.map((source) => <SourceCard key={source.name} description={source.description} isSubscribed={this.props.subscribedSources.find((subscribedSources) => subscribedSources.sourceId === source.id)} name={source.name} id={source.id}/>)}
             </div>
           </div>
