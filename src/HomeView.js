@@ -12,7 +12,6 @@ class HomeView extends Component {
   }
 
   render() {
-    if (this.props.topHeadlines) {
       return (
         <div>
           <h1 className="pageHeader">
@@ -25,8 +24,6 @@ class HomeView extends Component {
           </div>
         </div>
       );
-    } else
-        return null
   }
 }
 
