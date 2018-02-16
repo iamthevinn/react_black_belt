@@ -8,35 +8,31 @@ import { connect } from 'react-redux';
 class CategoryView extends Component {
 
   componentDidMount() {
-    
+
   }
 
   changeSelectedCategory(categoryName) {
-      this.props.changeSelectedCategory(categoryName);
+    this.props.changeSelectedCategory(categoryName);
   }
 
   render() {
-      return (
-        <div>
-          <h1 className="pageHeader">
-            Select Your Sources!
+    return (
+      <div>
+        <h1 className="pageHeader">
+          Select Your Sources!
           </h1>
-          <div className="categoryButtonContainer">
-              <div className="categoryButton">
-                <input style={{marginBottom:'0px'}} className="radioButton" type="checkBox" />
-                <div className="radioText">Business</div>
-              </div>
-              <div className="categoryButton">
-                <input style={{marginBottom:'0px'}} className="radioButton" type="checkBox" />
-                <div className="radioText">Technology</div>
-              </div>
-              <div className="categoryButton">
-                <input style={{marginBottom:'0px'}} className="radioButton" type="checkBox" />
-                <div className="radioText">Science</div>
-              </div>
+        <form className="categoryButtonContainer">
+          <div className="md-multi-ctrl-field">
+            <input checked={this.props.selectedCategory === 'business' ? true : false} onChange={() => this.changeSelectedCategory('business')} name="radio-example" id="radio-example-1" type="radio" />
+            <label htmlFor="radio-example-1">Business</label>
+            <input checked={this.props.selectedCategory === 'technology' ? true : false} onChange={() => this.changeSelectedCategory('technology')} name="radio-example" id="radio-example-2" type="radio" />
+            <label htmlFor="radio-example-2">Technology</label>
+            <input checked={this.props.selectedCategory === 'science' ? true : false} onChange={() => this.changeSelectedCategory('science')} name="radio-example" id="radio-example-3" type="radio" />
+            <label htmlFor="radio-example-3">Science</label>
           </div>
-        </div>
-      );
+        </form>
+      </div>
+    );
   }
 }
 
@@ -49,9 +45,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeSelectedCategory: (categoryName) => dispatch({type: CHANGE_SELECTED_CATEGORY, payload: categoryName})
+    changeSelectedCategory: (categoryName) => dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: categoryName })
   }
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(CategoryView)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryView)
