@@ -15,7 +15,7 @@
   width: 50%;
 }
 
-.homeHeader {
+.pageHeader {
   text-align: center;
   padding-bottom: 30px;
 }
@@ -38,4 +38,24 @@
 
 .articleCard {
   margin-bottom: 2px;
+}
+
+.categoryButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryButton {
+  display: inline-block;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.radioButton {
+  display: inline-block;
+}
+
+.radioText {
+  display: inline-block;
 }

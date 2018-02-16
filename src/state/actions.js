@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const GET_TOP_HEADLINES = "GET_TOP_HEADLINES";
+export const CHANGE_SELECTED_CATEGORY = "CHANGE_SELECTED_CATEGORY";
 
 
 export function loadTopHeadlines() {

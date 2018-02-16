@@ -13,10 +13,9 @@ class HomeView extends Component {
 
   render() {
     if (this.props.topHeadlines) {
-      console.log(this.props.topHeadlines)
       return (
         <div>
-          <h1 className="homeHeader">
+          <h1 className="pageHeader">
             Top Headlines
           </h1>
             <div className="topHeadlinesContainer">
