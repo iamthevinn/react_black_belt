@@ -74,6 +74,8 @@
 
 .sourceCard {
   margin-bottom: 2px;
+  display:flex;
+  align-items: center;
 }
 
 .articleImage {
@@ -118,7 +120,7 @@
 }
 
 .sourceButton {
-  height: 100%;
   display: inline-block;
+  padding-left: 2%;
   width: 20%;
 }

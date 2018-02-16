@@ -15,7 +15,7 @@ class SourceCard extends Component {
     return (
       <div className="card sourceCard">
         <div className="sourceNameAndDescription">
-          <div className="sourceName">Name: {this.props.name}</div>
+          <div className="sourceName">{this.props.name}</div>
           <div className="sourceDescription">{this.props.description}</div>
         </div>
         <div className="sourceButton">
