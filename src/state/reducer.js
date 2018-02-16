@@ -1,9 +1,10 @@
-import { GET_TOP_HEADLINES, CHANGE_SELECTED_CATEGORY, GET_SOURCES_BY_CATEGORY } from './actions';
+import { GET_TOP_HEADLINES, CHANGE_SELECTED_CATEGORY, GET_SOURCES_BY_CATEGORY, GET_SUBSCRIBED_SOURCES } from './actions';
 
 const initialState = {
     topHeadlines: [],
     selectedCategory: 'Business',
-    sourcesByCategory: []
+    sourcesByCategory: [],
+    subscribedSources: []
 };
 
 function reducer(state = initialState, action) {
@@ -14,6 +15,8 @@ function reducer(state = initialState, action) {
             return { ...state, selectedCategory: action.payload}
         case GET_SOURCES_BY_CATEGORY:
             return { ...state, sourcesByCategory: action.payload}
+        case GET_SUBSCRIBED_SOURCES:
+            return { ...state, subscribedSources: action.payload }
 
         default:
             return state;

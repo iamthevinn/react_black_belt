@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import ArticleCard from './ArticleCard';
-import { CHANGE_SELECTED_CATEGORY, loadCategory } from './state/actions';
+import { CHANGE_SELECTED_CATEGORY, loadCategory, loadSubscribedSourcesToState } from './state/actions';
 import { connect } from 'react-redux';
 import SourceCard from './SourceCard'
 
 class CategoryView extends Component {
 
   componentDidMount() {
-    this.props.loadCategory(this.props.selectedCategory)
+    this.props.loadCategory(this.props.selectedCategory);
+    this.props.loadSubscribedSourcesToState();
   }
 
   changeSelectedCategory(categoryName) {
@@ -50,14 +51,16 @@ const mapStateToProps = state => {
 
   return {
     selectedCategory: state.selectedCategory,
-    sourcesByCategory: state.sourcesByCategory
+    sourcesByCategory: state.sourcesByCategory,
+    subscribedSources: state.subscribedSources
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     changeSelectedCategory: (categoryName) => dispatch({ type: CHANGE_SELECTED_CATEGORY, payload: categoryName }),
-    loadCategory: (categoryName) => dispatch(loadCategory(categoryName))
+    loadCategory: (categoryName) => dispatch(loadCategory(categoryName)),
+    loadSubscribedSourcesToState: () => dispatch(loadSubscribedSourcesToState()),
   }
 };
 

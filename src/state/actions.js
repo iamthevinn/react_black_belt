@@ -3,6 +3,7 @@ import axios from "axios"
 export const GET_TOP_HEADLINES = "GET_TOP_HEADLINES";
 export const CHANGE_SELECTED_CATEGORY = "CHANGE_SELECTED_CATEGORY";
 export const GET_SOURCES_BY_CATEGORY = "GET_SOURCES_BY_CATEGORY"
+export const GET_SUBSCRIBED_SOURCES = "GET_SUBSCRIBED_SOURCES"
 
 export function loadTopHeadlines() {
   return (dispatch, getState, api) => {
@@ -24,6 +25,26 @@ export function loadCategory(categoryName) {
         }, () => { })
       }
 }
+
+export function loadSubscribedSourcesToState() {
+    return (dispatch, getState, api) => {
+        const promise = axios.get('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources');
+        promise.then(({ data: subscribedSources }) => {
+          dispatch({ type: GET_SUBSCRIBED_SOURCES, payload: subscribedSources })
+        }, () => { })
+      }
+}
+
+export function addSourceToSubscriptions(sourceObj) {
+    return (dispatch, getState, api) => {
+      const promise = axios.post('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources', sourceObj);
+  
+      promise.then(() => {
+        dispatch(loadSubscribedSourcesToState())
+      }, () => { })
+    }
+  }
+
 /*
 export function loadBlocDataToState(id) {
   return (dispatch, getState, api) => {
