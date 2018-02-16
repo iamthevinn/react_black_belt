@@ -28,7 +28,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div style={{ display: 'inline-block', width: '50%'}}>
+      <div className="navigationContent">
         <ul className="tabs">
           <NavItem exact={true} to={'/'} navName="Home" />
           <NavItem exact={true} to={'/categories'} navName="Customize" />
@@ -45,7 +45,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', fontSize: '36px' , width: '50%'}} >News Me!</div>
+            <div className="newsMe" >News Me!</div>
             <NavBar />
           </div>
 
