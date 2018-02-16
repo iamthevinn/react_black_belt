@@ -4,6 +4,7 @@ export const GET_TOP_HEADLINES = "GET_TOP_HEADLINES";
 export const CHANGE_SELECTED_CATEGORY = "CHANGE_SELECTED_CATEGORY";
 export const GET_SOURCES_BY_CATEGORY = "GET_SOURCES_BY_CATEGORY"
 export const GET_SUBSCRIBED_SOURCES = "GET_SUBSCRIBED_SOURCES"
+export const GET_SUBSCRIBED_HEADLINES = "GET_SUBSCRIBED_HEADLINES"
 
 export function loadTopHeadlines() {
   return (dispatch, getState, api) => {
@@ -17,33 +18,45 @@ export function loadTopHeadlines() {
 
 export function loadCategory(categoryName) {
 
-    return (dispatch, getState, api) => {
-        const promise = axios.get(api + 'sources?category=' + categoryName + '&language=en&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
-    
-        promise.then(({ data: sourceData }) => {
-          dispatch({ type: GET_SOURCES_BY_CATEGORY, payload: sourceData.sources })
-        }, () => { })
-      }
+  return (dispatch, getState, api) => {
+    const promise = axios.get(api + 'sources?category=' + categoryName + '&language=en&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
+
+    promise.then(({ data: sourceData }) => {
+      dispatch({ type: GET_SOURCES_BY_CATEGORY, payload: sourceData.sources })
+    }, () => { })
+  }
 }
 
 export function loadSubscribedSourcesToState() {
-    return (dispatch, getState, api) => {
-        const promise = axios.get('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources');
-        promise.then(({ data: subscribedSources }) => {
-          dispatch({ type: GET_SUBSCRIBED_SOURCES, payload: subscribedSources })
-        }, () => { })
-      }
+  return (dispatch, getState, api) => {
+    const promise = axios.get('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources');
+    promise.then(({ data: subscribedSources }) => {
+      dispatch({ type: GET_SUBSCRIBED_SOURCES, payload: subscribedSources })
+      dispatch(loadSubscribedHeadlinesToState(subscribedSources.map((subscribedSource) => subscribedSource.sourceId)))
+    }, () => { })
+  }
 }
 
 export function addSourceToSubscriptions(sourceObj) {
-    return (dispatch, getState, api) => {
-      const promise = axios.post('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources', sourceObj);
-  
-      promise.then(() => {
-        dispatch(loadSubscribedSourcesToState())
-      }, () => { })
-    }
+  return (dispatch, getState, api) => {
+    const promise = axios.post('http://5a86f1d1492dc500121b88a8.mockapi.io/subscribed_sources', sourceObj);
+
+    promise.then(() => {
+      dispatch(loadSubscribedSourcesToState())
+    }, () => { })
   }
+}
+
+export function loadSubscribedHeadlinesToState(subscribedSourcesArray) {
+
+  return (dispatch, getState, api) => {
+    const promise = axios.get('http://newsapi.org/v2/everything?sources=' + subscribedSourcesArray.join() + '&language=en&pageSize=100&apiKey=9d5b1ad7e74e4d0bb6f3b13741235e56');
+
+    promise.then(({data: headlines}) => {
+      dispatch({type: GET_SUBSCRIBED_HEADLINES, payload: headlines.articles})
+    }, () => { })
+  }
+}
 
 /*
 export function loadBlocDataToState(id) {
